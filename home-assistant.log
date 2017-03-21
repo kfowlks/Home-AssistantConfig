@@ -1,0 +1,204 @@
+17-03-21 18:51:54 ERROR (MainThread) [homeassistant.setup] Error during setup of component microsoft_face
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/setup.py", line 184, in _async_setup_component
+    result = yield from component.async_setup(hass, processed_config)
+  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/components/microsoft_face.py", line 118, in async_setup
+    config[DOMAIN].get(CONF_API_KEY),
+KeyError: 'microsoft_face'
+17-03-21 18:51:54 ERROR (MainThread) [homeassistant.setup] Unable to setup dependencies of image_processing.microsoft_face_detect. Setup failed for dependencies: microsoft_face
+17-03-21 18:51:54 ERROR (MainThread) [homeassistant.setup] Unable to prepare setup for platform image_processing.microsoft_face_detect: Could not setup all dependencies.
+17-03-21 18:51:54 ERROR (MainThread) [homeassistant.components.image_processing] Error while setting up platform microsoft_face_detect
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/helpers/entity_component.py", line 152, in _async_setup_platform
+    None, platform.setup_platform, self.hass, platform_config,
+AttributeError: 'bool' object has no attribute 'setup_platform'
+17-03-21 18:51:56 WARNING (Thread-11) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:52:06 WARNING (Thread-7) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:52:16 WARNING (Thread-5) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:52:18 WARNING (Thread-9) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:52:21 ERROR (MainThread) [homeassistant.components.device_tracker] Unable to load /home/homeassistant/.homeassistant/known_devices.yaml: Config file not found: /home/homeassistant/.homeassistant/known_devices.yaml
+17-03-21 18:52:21 ERROR (Thread-10) [pynetgear] Error talking to API
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/models.py", line 374, in prepare_url
+    scheme, auth, host, port, path, query, fragment = parse_url(url)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/url.py", line 195, in parse_url
+    raise LocationParseError(url)
+requests.packages.urllib3.exceptions.LocationParseError: Failed to parse: None:None
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/homeassistant/.homeassistant/deps/pynetgear/__init__.py", line 113, in _make_request
+    self.soap_url, headers=headers, data=message, timeout=10)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/api.py", line 110, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/api.py", line 56, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/sessions.py", line 474, in request
+    prep = self.prepare_request(req)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/sessions.py", line 407, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/models.py", line 302, in prepare
+    self.prepare_url(url, params)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/models.py", line 376, in prepare_url
+    raise InvalidURL(*e.args)
+requests.exceptions.InvalidURL: Failed to parse: None:None
+17-03-21 18:52:21 ERROR (Thread-10) [homeassistant.components.device_tracker.netgear] Failed to Login
+17-03-21 18:52:21 ERROR (MainThread) [homeassistant.components.device_tracker] Error setting up platform netgear
+17-03-21 18:53:26 WARNING (Thread-11) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:53:36 WARNING (Thread-8) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:53:46 WARNING (Thread-1) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:53:56 WARNING (Thread-6) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:54:06 WARNING (Thread-7) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:54:16 WARNING (Thread-8) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:54:26 WARNING (Thread-1) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:54:37 WARNING (Thread-3) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:54:47 WARNING (Thread-5) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:54:57 WARNING (Thread-1) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:55:07 WARNING (Thread-6) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:55:17 WARNING (Thread-7) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:55:27 WARNING (Thread-8) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:55:37 WARNING (Thread-6) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:55:47 WARNING (Thread-7) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:55:57 WARNING (Thread-8) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:56:07 WARNING (Thread-11) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:56:17 WARNING (Thread-10) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+17-03-21 18:56:27 WARNING (Thread-9) [requests.packages.urllib3.connectionpool] Failed to parse headers (url=http://localhost:8081/): [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 398, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/packages/urllib3/util/response.py", line 66, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+requests.packages.urllib3.exceptions.HeaderParsingError: [StartBoundaryNotFoundDefect(), MultipartInvariantViolationDefect()], unparsed data: ''
