@@ -1,2 +1,2 @@
 # Home-AssistantConfig
-Initial congig with camera enabled.
+Initial config with camera enabled.
