@@ -2,10 +2,10 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: 42.6803
-  longitude: -84.5631
+  latitude: 42.7325
+  longitude: 84.5555
   # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 267
+  elevation: 860
   # metric for Metric, imperial for Imperial
   unit_system: imperial
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -22,10 +22,10 @@ camera:
     mjpeg_url: http://localhost:8081
     name: Microsoft HDCam
 
-image_processing:
-  - platform: microsoft_face_detect
-    source:
-      - entity_id: camera.microsoft_hdcam
+#image_processing:
+#  - platform: microsoft_face_detect
+#    source:
+#      - entity_id: camera.microsoft_hdcam
 
 # Show links to resources in log and frontend
 introduction:
@@ -62,7 +62,9 @@ sun:
 
 # Weather Prediction
 sensor:
-  platform: yr
+  - platform: yr
+  - platform: moon
+  - platform: cpuspeed
 
 # Text to speech
 tts:
