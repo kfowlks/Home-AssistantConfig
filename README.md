@@ -1,2 +1,2 @@
 # Home-AssistantConfig
-Home-Assistant Config
+Initial congig with camera enabled.
