@@ -1,5 +1,5 @@
 device_tracker:
   - platform: netgear
     host: 192.168.1.1
-    username: !secret usernane
+    username: !secret username
     password: !secret password
