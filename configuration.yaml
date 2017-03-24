@@ -21,10 +21,10 @@ camera:
     mjpeg_url: http://localhost:8081
     name: Microsoft HDCam
 
-image_processing:
-  - platform: microsoft_face_detect
-    source:
-      - entity_id: camera.microsoft_hdcam
+#image_processing:
+#  - platform: microsoft_face_detect
+#    source:
+#      - entity_id: camera.microsoft_hdcam
 
 # Show links to resources in log and frontend
 introduction:
