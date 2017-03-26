@@ -1,3 +1,6 @@
-    platform: netgear
-    password: !secret password
-    port: 80
+    - platform: netgear
+      password: !secret password
+      port: 80
+    - platform: nmap_tracker
+      hosts: 192.168.1.1/24
+      home_interval: 10

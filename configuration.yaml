@@ -61,7 +61,9 @@ sun:
 
 # Weather Prediction
 sensor:
-  platform: yr
+  - platform: yr
+  - platform: cpuspeed
+    name: AMDFX
 
 # Text to speech
 tts:
