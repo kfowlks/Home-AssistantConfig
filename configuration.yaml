@@ -16,10 +16,10 @@ homeassistant:
 #    name: Microsoft HDCam
 #    file_path: /tmp/lastsnap.jpg
 
-camera:
-  - platform: mjpeg
-    mjpeg_url: http://localhost:8081
-    name: Microsoft HDCam
+#camera:
+#  - platform: mjpeg
+#    mjpeg_url: http://localhost:8081
+#    name: Microsoft HDCam
 
 #image_processing:
 #  - platform: microsoft_face_detect
@@ -69,4 +69,3 @@ tts:
 
 group: !include groups.yaml
 device_tracker: !include device_tracker.yaml
-

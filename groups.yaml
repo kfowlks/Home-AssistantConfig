@@ -1,0 +1,5 @@
+Outside:
+    name: Outside Lights 
+    entities:
+    - switch.outside_garage_lights
+    - switch.front_door_light_switch
