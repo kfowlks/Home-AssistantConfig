@@ -1,0 +1,9 @@
+trigger:
+    platform: state
+    entity_id: device_tracker.a85b785b6963
+    from: 'not_home'
+    to: 'home'
+  action:
+    service: notify.FileOut
+    data:
+      message: 'Person is now home'

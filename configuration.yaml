@@ -16,10 +16,15 @@ homeassistant:
 #    name: Microsoft HDCam
 #    file_path: /tmp/lastsnap.jpg
 
-#camera:
-#  - platform: mjpeg
-#    mjpeg_url: http://localhost:8081
-#    name: Microsoft HDCam
+camera:
+  - platform: ffmpeg
+    input: rtsp://admin:20160404@192.168.1.14/onvif1
+    name: Outside Cam
+
+camera 2:
+  - platform: ffmpeg
+    input: rtsp://admin:20160404@192.168.1.13/onvif1
+    name: Inside Cam
 
 #image_processing:
 #  - platform: microsoft_face_detect
@@ -69,5 +74,12 @@ sensor:
 tts:
   platform: google
 
+notify:
+  - name: FileOut
+    platform: file
+    filename: /tmp/Kat_home.txt
+
+
 group: !include groups.yaml
 device_tracker: !include device_tracker.yaml
+#automation: !include automation.yaml 
