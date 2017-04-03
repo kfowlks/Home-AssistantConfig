@@ -18,12 +18,12 @@ homeassistant:
 
 camera:
   - platform: ffmpeg
-    input: rtsp://admin:20160404@192.168.1.14/onvif1
+    input: rtsp://admin:20160404@192.168.1.14/onvif2
     name: Outside Cam
 
 camera 2:
   - platform: ffmpeg
-    input: rtsp://admin:20160404@192.168.1.13/onvif1
+    input: rtsp://admin:20160404@192.168.1.13/onvif2
     name: Inside Cam
 
 #image_processing:
@@ -42,7 +42,7 @@ config:
 
 http:
   # Uncomment this to add a password (recommended!)
-  # api_password: PASSWORD
+  # api_password: !secret api_pass
   # Uncomment this if you are using SSL or running in Docker etc
   # base_url: example.duckdns.org:8123
 
@@ -64,11 +64,32 @@ logbook:
 # Track the sun
 sun:
 
-# Weather Prediction
+mqtt:
+  broker: m12.cloudmqtt.com
+  port: 14853
+  #keepalive: 60
+  username: ogvhgihb
+  password: SaDo3PUh_eJV
+  #protocol: 3.1
+
 sensor:
   - platform: yr
   - platform: cpuspeed
     name: AMDFX
+
+  - platform: mqtt
+    name: "Basement Room Temp"
+    state_topic: "tele/home/sonoff/basement/SENSOR"
+    qos: 1
+    unit_of_measurement: "°C"
+    state_format: "{{ value_json.AM2301.Temperature }}"
+
+  - platform: mqtt
+    name: "Basement Humidity"
+    state_topic: "tele/home/sonoff/basement/SENSOR"
+    qos: 1
+    unit_of_measurement: "%"
+    state_format: 'json:AM2301.Humidity'
 
 # Text to speech
 tts:
@@ -79,6 +100,15 @@ notify:
     platform: file
     filename: /tmp/Kat_home.txt
 
+switch:
+  - platform: mqtt
+    name: "Basement"
+    state_topic: "stat/home/sonoff/basement/POWER"
+    command_topic: "cmnd/DVES_9F227C/POWER"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
 
 group: !include groups.yaml
 device_tracker: !include device_tracker.yaml
