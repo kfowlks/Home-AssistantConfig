@@ -118,7 +118,7 @@ notify:
 switch:
   - platform: mqtt
     name: "Outside"
-    state_topic: "stat/home/sonoff/basement/POWER"
+    state_topic: "stat/home/sonoff/outside/POWER"
     command_topic: "cmnd/DVES_9F227C/POWER"
     qos: 0
     payload_on: "ON"
@@ -127,7 +127,7 @@ switch:
 
   - platform: mqtt
     name: "Basement"
-    state_topic: "stat/home/sonoff/outside/POWER"
+    state_topic: "stat/home/sonoff/basement/POWER"
     command_topic: "cmnd/DVES_9F9F65/POWER"
     qos: 0
     payload_on: "ON"
