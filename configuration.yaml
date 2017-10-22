@@ -26,6 +26,10 @@ camera 2:
     input: rtsp://admin:20160404@192.168.1.13/onvif2
     name: Inside Cam
 
+
+ecobee:
+  api_key: !secret ecobee_api_key
+
 #image_processing:
 #  - platform: microsoft_face_detect
 #    source:
