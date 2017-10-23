@@ -1,0 +1,3 @@
+sensor.alarm_type:
+  ignored: false
+  polling_intensity: 0
