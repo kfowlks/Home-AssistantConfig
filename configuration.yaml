@@ -16,16 +16,15 @@ homeassistant:
 #    name: Microsoft HDCam
 #    file_path: /tmp/lastsnap.jpg
 
-camera:
-  - platform: ffmpeg
-    input: rtsp://admin:20160404@192.168.1.14/onvif2
-    name: Outside Cam
+#camera:
+#  - platform: ffmpeg
+#    input: rtsp://admin:20160404@192.168.1.14/onvif2
+#    name: Outside Cam
 
-camera 2:
-  - platform: ffmpeg
-    input: rtsp://admin:20160404@192.168.1.13/onvif2
-    name: Inside Cam
-
+#camera 2:
+#  - platform: ffmpeg
+#    input: rtsp://admin:20160404@192.168.1.13/onvif2
+#    name: Inside Cam
 
 ecobee:
   api_key: !secret ecobee_api_key
@@ -43,6 +42,15 @@ frontend:
 
 # Enables configuration UI
 config:
+
+
+# Example configuration.yaml entry
+weblink:
+  entities:
+    - name: Router
+      url: http://192.168.1.1/
+    - name: Home Assistant
+      url: https://home-assistant.io
 
 http:
   # Uncomment this to add a password (recommended!)
