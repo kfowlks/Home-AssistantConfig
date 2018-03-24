@@ -11,6 +11,10 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Detroit
 
+http:
+  api_password: !secret ha_api_pass
+  base_url: ha79.ddns.net:8123
+
 #camera:
 #  - platform: local_file
 #    name: Microsoft HDCam
@@ -26,6 +30,10 @@ homeassistant:
 #    input: rtsp://admin:20160404@192.168.1.13/onvif2
 #    name: Inside Cam
 
+
+#vultr:
+#  api_key: !secret vultr_api_key
+
 ecobee:
   api_key: !secret ecobee_api_key
 
@@ -35,7 +43,7 @@ ecobee:
 #      - entity_id: camera.microsoft_hdcam
 
 # Show links to resources in log and frontend
-introduction:
+#introduction:
 
 # Enables the frontend
 frontend:
@@ -52,11 +60,11 @@ weblink:
     - name: Home Assistant
       url: https://home-assistant.io
 
-http:
+#http:
   # Uncomment this to add a password (recommended!)
   # api_password: !secret api_pass
   # Uncomment this if you are using SSL or running in Docker etc
-  # base_url: example.duckdns.org:8123
+#  base_url: ha79.ddns.net:8123
 
 # Checks for available updates
 updater:
@@ -73,8 +81,24 @@ history:
 # View all events in a logbook
 logbook:
 
+#recoder:
+#  purge_days: 365
+
 # Track the sun
 sun:
+
+weather:
+  - platform: yweather
+    monitored_conditions:
+      - weather
+      - weather_current
+      - temp_min
+      - temp_max
+      - wind_speed
+      - pressure
+      - visibility
+      - humidity
+      - temperature
 
 mqtt:
   broker: m12.cloudmqtt.com
@@ -85,10 +109,20 @@ mqtt:
   #protocol: 3.1
 
 sensor:
-  - platform: yr
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
+  - platform: blockchain
+    addresses:
+      - '39piZUSVUhHLtWcKJ8hA9WshAEqosnJdcs'
   - platform: cpuspeed
     name: AMDFX
-    # Sonoff Program v4.1.1 
+    # Sonoff Program v4.1.1
     # Sample raw output from sensor {"Time":"2017-04-06T23:23:41", "AM2301":{"Temperature":6.1, "Humidity":87.2}}
   - platform: mqtt
     name: "Basement Room Temp"
@@ -118,6 +152,24 @@ sensor:
     unit_of_measurement: "%"
     value_template: '{{ value_json.AM2301.Humidity }}'
 
+  - platform: mqtt
+    name: "Basement Water Pump"
+    state_topic: "tele/home/sonoff/waterpump/ENERGY"
+    unit_of_measurement: "kWh"
+    value_template: '{{ value_json.Today }}'
+
+  - platform: mqtt
+    name: "Turkey Brine Monitor"
+    state_topic: "tele/home/webmos/brine/SENSOR"
+    unit_of_measurement: "°C"
+    value_template: '{{ value_json.DS18B20.Temperature }}'
+
+  - platform: mqtt
+    name: "Water Leak Basement Monitor"
+    state_topic: "tele/home/webmos/waterleak/SENSOR"
+#    unit_of_measurement: "°C"
+#    value_template: '{{ value_json.Analog0 }}'
+    value_template: "{% if value_json.Analog0 < 1024 %}Water Alert{% else %}No Water{% endif %}"
 # Text to speech
 tts:
   platform: google
@@ -126,6 +178,23 @@ notify:
   - name: FileOut
     platform: file
     filename: /tmp/Kat_home.txt
+  - name: kevin_email
+    platform: smtp
+    server: smtp.gmail.com
+    port: 587
+    timeout: 15
+    sender: kfowlks@gmail.com
+    encryption: starttls
+    username: kfowlks@gmail.com
+    password: Ilovehavanna1979
+    recipient:
+      - fowlk1kd@gmail.com
+    sender_name: My Home Assistant
+  - name: ComCastUsage
+    platform: aws_lambda
+    aws_access_key_id: !secret amz_lamda_user
+    aws_secret_access_key: !secret amz_lamda_pass
+    region_name: 'us-east-1'
 
 switch:
   - platform: mqtt
@@ -139,19 +208,57 @@ switch:
 
   - platform: mqtt
     name: "Basement"
-    state_topic: "stat/home/sonoff/basement/POWER"
+    state_topic: "stat/DVES_9F9F65/POWER"
     command_topic: "cmnd/DVES_9F9F65/POWER"
     qos: 0
     payload_on: "ON"
     payload_off: "OFF"
     retain: true
+
+  - platform: mqtt
+    name: "XMAS House Lights"
+    state_topic: "stat/DVES_95EF25/POWER"
+    command_topic: "cmnd/DVES_95EF25/POWER"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "XMAS Tree Lights"
+    state_topic: "stat/DVES_954940/POWER"
+    command_topic: "cmnd/DVES_954940/POWER"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Basement Water Pump"
+    state_topic: "stat/DVES_B4946B/POWER"
+    command_topic: "cmnd/DVES_B4946B/POWER"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Turkey Brine"
+    state_topic: "stat/DVES_104CE4/POWER"
+    command_topic: "cmnd/DVES_104CE4/POWER"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
 group: !include groups.yaml
 device_tracker: !include device_tracker.yaml
-#automation: !include automation.yaml 
+automation: !include automation.yaml
 logger:
   default: warning
   logs:
     homeassistant.components.device_tracker.mqtt: debug
+    homeassistant.components.http.ban: warning
 
 zwave:
   usb_path: /dev/ttyACM0
