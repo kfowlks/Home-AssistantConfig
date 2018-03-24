@@ -1,5 +1,10 @@
 Outside:
-    name: Outside Lights 
+    name: Outside Lights
     entities:
     - switch.outside_garage_lights
     - switch.front_door_light_switch
+Xmas_Lights:
+   name: Holiday Lights
+   entities:
+   - switch.xmas_tree_lights
+   - switch.xmas_house_lights
