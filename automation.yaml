@@ -1,9 +1,37 @@
-trigger:
-    platform: state
-    entity_id: device_tracker.a85b785b6963
-    from: 'not_home'
-    to: 'home'
+- id: external_home_lights_on_at_sunset
+  alias: Turn on external home lights
+  trigger:
+    platform: numeric_state
+    entity_id: sun.sun
+    value_template: "{{ state.attributes.elevation }}"
+    below: -4.0
   action:
-    service: notify.FileOut
+    service: homeassistant.turn_on
+    entity_id: group.outside
+- id: external_home_lights_off_at_sunrise
+  alias: Turn off external home lights
+  trigger:
+    platform: numeric_state
+    entity_id: sun.sun
+    value_template: "{{ state.attributes.elevation }}"
+    below: -2.1
+  action:
+    service: homeassistant.turn_off
+    entity_id: group.outside
+- id: turkey
+  alias: Turkey Brine Temp Monitor
+  trigger:
+    platform: mqtt
+    topic: home/webmos/brine
+    payload: 'on'
+  condition:
+    condition: or
+    conditions:
+      - condition: template
+        value_template: '{{ sensor.turkey_brine_monitor > 43 }}'
+      - condition: template
+        value_template: '{{ sensor.turkey_brine_monitor < 30 }}'
+  action:
+    service: notify.kevin_email
     data:
-      message: 'Person is now home'
+      message: 'Check turkey brine ASAP!'
