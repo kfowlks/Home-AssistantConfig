@@ -1,0 +1,12 @@
+switch.outside_garage_lights:
+  name:
+  platform: wemo
+  unique_id: 221639K1300B12
+switch.master_bedroom_lights:
+  name:
+  platform: wemo
+  unique_id: 221639K1300B13
+switch.front_door_light_switch:
+  name:
+  platform: wemo
+  unique_id: 221639K130063C
